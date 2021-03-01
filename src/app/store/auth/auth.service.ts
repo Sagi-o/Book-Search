@@ -8,9 +8,9 @@ import { of, from } from 'rxjs';
 export class AuthService {
     constructor(private utilsService: UtilsService) {}
 
-    login(username: string, password?: string) {
+    login(username: string) {
         // Simulating request to a server
-        const requestToServer = this.utilsService.sleep(500);
+        const requestToServer = this.utilsService.sleep(1500);
         return from(requestToServer);
     }
 }

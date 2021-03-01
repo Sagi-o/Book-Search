@@ -1,12 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { of } from 'rxjs';
-import { catchError, switchMap, tap } from 'rxjs/operators';
 import {
-    SetUser, ClearUser,
-
+    SetUser, ClearUser
 } from './user.actions';
-import { Router } from '@angular/router';
 
 interface UserStateModel {
     username: string;
@@ -27,7 +23,7 @@ export class UserState {
     }
 
     @Action(SetUser)
-    setUser({ patchState, dispatch }: StateContext<UserStateModel>, action: SetUser) {
+    setUser({ patchState }: StateContext<UserStateModel>, action: SetUser) {
         patchState({ username: action.username });
     }
 

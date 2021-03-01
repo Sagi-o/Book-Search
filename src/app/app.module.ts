@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { appState } from './store';
 
 import { environment } from '../environments/environment';
+import { SharedModule } from './modules/shared/shared.module';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { environment } from '../environments/environment';
     ),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsFormPluginModule.forRoot(),
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

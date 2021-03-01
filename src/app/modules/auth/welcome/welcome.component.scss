@@ -1,0 +1,51 @@
+.welcome {
+    display: flex;
+    flex-direction: row;
+
+    &__hero {
+        width: 50vw;
+        position: relative;
+
+        img {
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        h1 {
+            position: absolute;
+            top: 3rem;
+            left: 3rem;
+            color: var(--white);
+        }
+    }
+
+    &__content {
+        width: 50vw;
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__form {
+        border: 1px solid gray;
+        border-radius: var(--border-radius);
+        padding: 3rem;
+        margin-block-start: 2rem;
+    }
+
+    &__title {
+        // margin-block-start: 5rem;
+    }
+
+    .title-input {
+        max-width: 320px;
+        margin-block-start: 2rem;
+    }
+
+    &__cta {
+        max-width: 320px;
+        min-width: 320px;
+    }
+}

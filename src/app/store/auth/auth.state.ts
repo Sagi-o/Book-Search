@@ -1,13 +1,14 @@
 import { State, Store, Selector, Action, StateContext } from '@ngxs/store';
 import { Injectable, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { Login, LoginSuccess, LoginError } from '.';
+import { Login, LoginSuccess, LoginError } from './auth.actions';
 import { tap, catchError } from 'rxjs/operators';
+import { SetUser } from '../user';
 
 interface AuthStateModel {
     isLoading: boolean;
     error: any;
+    loginForm: any;
 }
 
 @State<AuthStateModel>({
@@ -15,6 +16,12 @@ interface AuthStateModel {
     defaults: {
         isLoading: false,
         error: null,
+        loginForm: {
+            model: undefined,
+            dirty: false,
+            status: '',
+            errors: {}
+        }
     }
 })
 @Injectable()
@@ -28,13 +35,18 @@ export class AuthState {
 
     @Action(Login)
     login({ patchState, dispatch, getState }: StateContext<AuthStateModel>, action: Login) {
-        const { email, password } = action;
+        const { username } = getState().loginForm.model;
+
+        if (!username?.trim()) {
+            return;
+        }
 
         patchState({ isLoading: true, error: null });
 
-        return this.authService.login(email, password).pipe(
+        return this.authService.login(username).pipe(
             tap(_ => {
-                dispatch(new LoginSuccess());
+                dispatch(new SetUser(username));
+                dispatch(new LoginSuccess(username));
             }),
             catchError(error => {
                 return dispatch(new LoginError(error));

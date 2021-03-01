@@ -1,10 +1,10 @@
 export class Login {
     static type = '[Auth] Login';
-    constructor(public email: string, public password?: string) { }
 }
 
 export class LoginSuccess {
     static type = '[Auth] Login Success';
+    constructor(public username: string) {}
 }
 
 export class LoginError {

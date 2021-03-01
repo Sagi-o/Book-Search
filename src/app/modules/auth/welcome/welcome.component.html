@@ -1,0 +1,30 @@
+<div class="welcome">
+    <div class="welcome__content">
+        <h2>
+            Welcome to Book Search
+        </h2>
+        <div [formGroup]="loginForm" ngxsForm="auth.loginForm" class="welcome__form">
+            <div class="welcome__title">
+                Please enter enter your username to continue
+            </div>
+
+            <div class="title-input mt1">
+                <div class="title-input__title">
+                    Username
+                </div>
+                <div class="title-input__input">
+                    <input type="text" class="input" placeholder="Username" formControlName="username" (keyup.enter)="onContinueClick()">
+                </div>
+            </div>
+
+            <div class="welcome__cta">
+                <button class="button-accent" (click)="onContinueClick()" [class.disabled]="loginForm.invalid" [class.loading]="isLoading$ | async">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class="welcome__hero">
+        <img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="">
+        <h1>Explore wide variety of books</h1>
+    </div>
+</div>

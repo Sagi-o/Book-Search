@@ -1,20 +1,22 @@
-
+import { Directive, OnInit, Self, OnDestroy, Optional, Host, ComponentRef, ViewContainerRef,
+    ComponentFactoryResolver, ElementRef, InjectionToken, Inject } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Subject, merge, EMPTY, Observable, fromEvent } from 'rxjs';
 import { takeUntil, shareReplay } from 'rxjs/operators';
 import { ControlErrorComponent } from '../components/global/control-error/control-error.component';
 import { FormSubmitDirective } from './form-submit.directive';
-import { Directive,
-    OnInit,
-    Self,
-    OnDestroy,
-    Optional,
-    Host,
-    ComponentRef,
-    ViewContainerRef,
-    ComponentFactoryResolver,
-    ElementRef
-} from '@angular/core';
+
+export const defaultErrors = {
+    required: (error) => `Required field`,
+    minlength: ({ requiredLength, actualLength }) => `נדרשים לפחות ${requiredLength} תווים אך נמצאו ${actualLength}`,
+    maxlength: ({ requiredLength, actualLength }) => `נדרשים מקסימום ${requiredLength} תווים אך נמצאו ${actualLength}`,
+    email: (error) => `Email format is required`
+};
+
+export const FORM_ERRORS = new InjectionToken('FORM_ERRORS', {
+    providedIn: 'root',
+    factory: () => defaultErrors
+});
 
 @Directive({
     // tslint:disable-next-line:directive-selector
@@ -23,49 +25,29 @@ import { Directive,
 export class ControlErrorsDirective implements OnInit, OnDestroy {
     click$ = fromEvent(this.host.nativeElement, 'click').pipe(shareReplay(1));
 
-    submit$: Observable<Event>;
-    // click$ = fromEvent(this.control, 'click').pipe(shareReplay(1));
-
     controlErrorComponent: ComponentRef<ControlErrorComponent>;
     ngUnsubscribe = new Subject();
 
-    // Every valid error translation needs to be added here
-    validTranslationKeys = ['required', 'email', 'minlength', 'maxlength'];
-
     constructor(@Self() private control: NgControl,
                 @Optional() @Host() private form: FormSubmitDirective,
-                // @Inject(FORM_ERRORS) private errors,
+                @Inject(FORM_ERRORS) private errors,
                 private host: ElementRef<HTMLFormElement>,
                 private vcr: ViewContainerRef,
-                private resolver: ComponentFactoryResolver) {
-                    this.submit$ = this.form ? this.form.submit$ : EMPTY;
-                    // this.click$ = this.form ? this.form.click$ : EMPTY;
-                }
+                private resolver: ComponentFactoryResolver) { }
 
     ngOnInit() {
         merge(
             this.click$,
-            // this.submit$,
             this.control.valueChanges
         ).pipe(
             takeUntil(this.ngUnsubscribe)
-        ).subscribe(async () => {
+        ).subscribe(() => {
             // Error object for example: {minlength: 6, requiredlength: 10}
             const controlErrors = this.control.errors;
-            // console.log(controlErrors);
             if (controlErrors) {
-                const errorName = Object.keys(controlErrors)[0]; // required or minLength for example
-
-                // Only errors that have translation will be shown
-                if (!this.validTranslationKeys.includes(errorName)) {
-                    this.setError(null);
-                    return;
-                }
-                const getError = controlErrors[errorName];
-                const text = getError(controlErrors[errorName]);
-                // console.log(`errorName: ${errorName},
-                // getError: ${getError},controlErrors[errorName]: ${JSON.stringify(controlErrors[errorName])} ,text: ${text}`);
-                // const text = await this.translate.get(`control_errors.${errorName}`, controlErrors[errorName]).toPromise();
+                const firstKey = Object.keys(controlErrors)[0];
+                const getError = this.errors[firstKey];
+                const text = getError(controlErrors[firstKey]);
                 this.setError(text);
             } else if (this.controlErrorComponent) {
                 this.setError(null);
