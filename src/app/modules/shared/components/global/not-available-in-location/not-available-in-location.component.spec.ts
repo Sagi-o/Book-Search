@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NotAvailableInLocationComponent } from './not-available-in-location.component';
 
@@ -6,7 +6,7 @@ describe('NotAvailableInLocationComponent', () => {
   let component: NotAvailableInLocationComponent;
   let fixture: ComponentFixture<NotAvailableInLocationComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NotAvailableInLocationComponent ]
     })
