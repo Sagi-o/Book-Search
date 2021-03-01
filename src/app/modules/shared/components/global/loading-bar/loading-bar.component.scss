@@ -1,0 +1,25 @@
+.loading-bar {
+    height: 0px;
+    opacity: 0;
+    width: 100%;
+    overflow: hidden;
+    transition:  250ms linear;
+    // position: sticky;
+    position: -webkit-sticky;
+    // top: 0;
+    background: var(--primary-light);
+    z-index: 1100;
+
+    &__line {
+        height: inherit;
+        width: 200px;
+        background: var(--primary);
+        animation: indeterminate 2.3s infinite;
+        position: absolute;
+    }
+}
+
+.visible {
+    height: 3px;
+    opacity: 1;
+}

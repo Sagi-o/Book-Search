@@ -1,0 +1,13 @@
+#photo {
+    transition: 300ms;
+    object-fit: cover;
+    background-color: white;
+    box-shadow: var(--shadow-3);
+    margin: 0;
+}
+
+.container {
+    height: fit-content;
+    width: fit-content;
+    margin: 0;
+}

@@ -1,0 +1,34 @@
+.container {
+    position: sticky;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: var(--primary-light);
+    // background: linear-gradient(241.17deg, var(--primary) 0%, var(--primary-light) 100%);
+    top: 0;
+    // left: 0;
+    z-index: 1001;
+    scroll-behavior: none;
+    transition: var(--normal-speed);
+    pointer-events: none;
+    display: block;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    pointer-events: none;
+    text-align: center;
+}
+
+.logo {
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+    animation: slideUp 300ms ease-out;
+    margin-bottom: 1rem;   
+    font-weight: var(--font-weight-b); 
+    letter-spacing: var(--letter-spacing);
+    border: 2px solid var(--primary);
+    padding: 1rem;
+}

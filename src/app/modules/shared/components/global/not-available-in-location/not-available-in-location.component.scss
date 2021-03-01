@@ -1,0 +1,58 @@
+.not-available {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 576px;
+    height: 340px;
+    direction: ltr;
+
+    &__title {
+        font-weight: var(--font-weight-b);
+        font-size: var(--font-size-l3);
+        color: var(--dark-1);
+        margin-block-start: 1rem;
+    }
+
+    &__description {
+        margin-block-start: 2rem;
+    }
+
+    &__input {
+        span {
+            margin-inline-end: .5rem;
+            color: var(--dark-1);
+        }
+
+        margin-block-start: 3rem;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__cta {
+        margin-block-start: auto;
+
+        button {
+            width: 160px;
+            margin-inline-start: auto;
+            margin-inline-end: auto;
+        }
+    }
+}
+
+@import 'src/scss/variables/breakpoints';
+
+@media only screen and (max-width: $tablet) {
+    .not-available {
+        width: 100vw;
+        height: 100vh;
+
+        &__cta {    
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

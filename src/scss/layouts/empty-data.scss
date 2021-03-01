@@ -1,0 +1,23 @@
+.empty-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    // background: var(--white-opacity);
+    border-radius: var(--border-radius);
+    animation: fadeIn 300ms ease-in;
+    // border: 1px solid var(--gray-light-1);
+    text-align: center;
+
+    #illustration {
+        max-height: 170px;
+        margin-block-end: 3rem;
+    }
+
+    button {
+        max-width: 140px;
+        margin-block-start: 1rem;
+    }
+}

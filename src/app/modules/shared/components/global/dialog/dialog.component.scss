@@ -1,0 +1,12 @@
+.dialog {
+    position: fixed;
+    width: fit-content;
+    height: fit-content;
+    background: transparent;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    user-select: none;
+    // padding: 2rem;
+    // opacity: 0.6;
+}

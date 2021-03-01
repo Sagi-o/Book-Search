@@ -1,0 +1,20 @@
+<div class="slider">
+        <div class="slider__loading">
+                <app-progress-indicator [current]="currentIndex+1" [total]="images.length"></app-progress-indicator>
+        </div>
+
+        <div class="slider__images">
+                <img [src]="getImage()" alt="" (load)="onLoad($event)">
+        </div>
+
+        <div class="next" tabindex="1" (click)="onNextClick()">
+                <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="previous" tabindex="1" (click)="onPreviousClick()">
+                <i class="fas fa-chevron-left"></i>
+        </div>
+
+        <div class="slider__index">
+                {{ currentIndex+1 }} / {{ images?.length }}
+        </div>
+</div>
