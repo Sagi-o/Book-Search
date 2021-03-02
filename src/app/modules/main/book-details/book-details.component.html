@@ -61,11 +61,28 @@
 
 
     <ng-container *ngIf="book.volumeInfo.pageCount">
-            <div class="book-details__header">
-                Pages
+        <div class="book-details__header">
+            Pages
+        </div>
+        <div class="book-details__value">
+            {{ book.volumeInfo.pageCount }}
+        </div>
+    </ng-container>
+
+    <div class="book-details__wishlist">
+        <div *ngIf="!(isFoundOnWishlist() | async); else foundOnWishlist" (click)="onAddToWishlistClick()">
+            <i class="far fa-bookmark mrd5"></i>
+            <span>
+                Add to my wish list
+            </span>
+        </div>
+        <ng-template #foundOnWishlist>
+            <div (click)="onRemoveFromWishlistClick()">
+                <i class="fas fa-bookmark mrd5"></i>
+                <span>
+                    Remove from my wishlist
+                </span>
             </div>
-            <div class="book-details__value">
-                {{ book.volumeInfo.pageCount }}
-            </div>
-        </ng-container>
+        </ng-template>
+    </div>
 </div>

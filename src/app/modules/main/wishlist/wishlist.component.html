@@ -9,4 +9,18 @@
                     </button> -->
         </div>
     </div>
+    <div class="wishlist" *ngIf="(wishlist$ | async)?.length; else emptyWishlist">
+        <div class="wishlist__books">
+            <ng-container *ngFor="let book of wishlist$ | async">
+                <app-book-card [book]="book" (clicked)="onBookClicked($event)"></app-book-card>
+            </ng-container>
+        </div>
+    </div>
+
+    <ng-template #emptyWishlist>
+            <div class="empty-data mt3">
+                <img id="illustration" src="assets/illustrations/wishlist.svg" alt="">
+                <span>Books that will be added to wishlist will be shown here</span>
+            </div>
+        </ng-template>
 </div>

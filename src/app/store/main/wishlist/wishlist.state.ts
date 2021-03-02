@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { State, Selector, StateContext, Action } from '@ngxs/store';
+import { State, Selector, StateContext, Action, createSelector } from '@ngxs/store';
 import { tap, catchError } from 'rxjs/operators';
+import { Book } from '../search/book.model';
 import { AddToWishlist, RemoveFromWishlist } from './wishlist.actions';
 
 interface WishlistStateModel {
-    items: any[];
+    books: Book[];
 }
 
 @State<WishlistStateModel>({
     name: 'wishlist',
     defaults: {
-        items: []
+        books: []
     }
 })
 @Injectable()
@@ -18,21 +19,27 @@ export class WishlistState {
     constructor() { }
 
     @Selector()
-    static getItems(state: WishlistStateModel) {
-        return state.items;
+    static getBooks(state: WishlistStateModel) {
+        return state.books;
+    }
+
+    static isFoundOnWishlist(bookId: string) {
+        return createSelector([WishlistState], (state: WishlistStateModel) => {
+            return state.books.find(item => item.id === bookId) ? true : false;
+        });
     }
 
     @Action(AddToWishlist)
     addToWishlist({ patchState, dispatch, getState }: StateContext<WishlistStateModel>, action: AddToWishlist) {
-        const item = action.item;
-        const items = [item, ...getState().items];
-        patchState({ items });
+        const { book } = action;
+        const books = [book, ...getState().books];
+        patchState({ books });
     }
 
     @Action(RemoveFromWishlist)
     removeFromWishlist({ patchState, dispatch, getState }: StateContext<WishlistStateModel>, action: RemoveFromWishlist) {
-        // const item = action.item;
-        // const items = [item, ...getState().items];
-        // patchState({ items });
+        const { bookId } = action;
+        const { books } = getState();
+        patchState({ books: books.filter(book => book.id !== bookId) });
     }
 }
