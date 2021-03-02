@@ -15,7 +15,6 @@ export type SearchResponse = {
     providedIn: 'root'
 })
 export class SearchService {
-    // private readonly BOOKS_ENDPOINT = `AIzaSyCB3mqn5L5sDSb4nuBYFhcyjsiYSgE-8iA`;
     private readonly BOOKS_ENDPOINT = `https://www.googleapis.com/books/v1/volumes`;
 
     constructor(private http: HttpClient) {}
