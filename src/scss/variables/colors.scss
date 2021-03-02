@@ -1,5 +1,5 @@
 :root {
-    --primary: #3B2D29;
+    --primary: #564541;
     --primary-light: #96A0A1;
 
     --accent: #7D8997;
@@ -9,8 +9,8 @@
     --gradient-dark: #2D7488;
 
     --sidebar-background: rgba(244, 244, 244, 0.7);
-    --sidebar-text: #3B2D29;
-    --sidebar-hover-background: var(--accent-light);
+    --sidebar-text: var(--primary);
+    --sidebar-hover-background: var(--gray-light-3);
     --sidebar-selected-text: white;
     --sidebar-selected-background: var(--primary);
 
