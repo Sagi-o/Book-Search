@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   animations: [listAnimationFast]
 })
 export class AlertComponent implements OnInit, OnDestroy {
-  readonly showInSeconds = 5.2;
+  readonly SECS_SHOWN = 5.2;
 
   alerts: Alert[] = [];
 
@@ -23,7 +23,6 @@ export class AlertComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.alertService.getAlert().subscribe((alert: Alert) => {
       this.show(alert);
-      // this.playAlertSound();
     });
   }
 
@@ -33,7 +32,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
   async show(alert: Alert) {
     this.alerts.push(alert);
-    await this.utilsService.sleep(this.showInSeconds * 1000);
+    await this.utilsService.sleep(this.SECS_SHOWN * 1000);
     this.close(alert);
     await this.utilsService.sleep(1000);
     this.alerts.shift();
@@ -44,7 +43,6 @@ export class AlertComponent implements OnInit, OnDestroy {
   }
 
   cssClass(alertType: AlertType) {
-    // return css class based on alert type
     switch (alertType) {
       case AlertType.Success:
         return 'success';
@@ -55,12 +53,5 @@ export class AlertComponent implements OnInit, OnDestroy {
       case AlertType.Warn:
         return 'warn';
     }
-  }
-
-  playAlertSound(){
-    const audio = new Audio();
-    audio.src = 'assets/sounds/alert.mp3';
-    audio.load();
-    audio.play();
   }
 }

@@ -6,7 +6,6 @@ import { DotsComponent } from './components/global/dots/dots.component';
 import { FormsModule } from '@angular/forms';
 import { ControlErrorsDirective } from './directives/control-errors.directive';
 import { FormSubmitDirective } from './directives/form-submit.directive';
-import { DefaultImageDirective } from './directives/default-image.directive';
 import { SwitchComponent } from './components/global/switch/switch.component';
 import { LoadingBarComponent } from './components/global/loading-bar/loading-bar.component';
 import { MyDatePipe } from './pipes/my-date.pipe';
@@ -18,21 +17,24 @@ import { LazyImgDirective } from './directives/lazy-image.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { ProgressIndicatorComponent } from './components/global/progress-indicator/progress-indicator.component';
 import { InfiniteScrollComponent } from './components/global/infinite-scroll/infinite-scroll.component';
+import { SidebarComponent } from './components/global/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [ProfilePhotoComponent, AlertComponent, DotsComponent,
-    DefaultImageDirective, SwitchComponent, LoadingBarComponent, MyDatePipe, MyHourPipe, ControlErrorComponent,
+    SwitchComponent, LoadingBarComponent, MyDatePipe, MyHourPipe, ControlErrorComponent,
     ControlErrorsDirective, FormSubmitDirective,
-     StarsRatingComponent, DialogComponent, LazyImgDirective, ProgressIndicatorComponent, InfiniteScrollComponent],
+    StarsRatingComponent, DialogComponent, LazyImgDirective, ProgressIndicatorComponent, InfiniteScrollComponent,
+    SidebarComponent],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule
   ],
   exports: [ProfilePhotoComponent, AlertComponent,
-    DefaultImageDirective, SwitchComponent, LoadingBarComponent, MyDatePipe,
+    SwitchComponent, LoadingBarComponent, MyDatePipe,
     MyHourPipe, ControlErrorComponent, ControlErrorsDirective, FormSubmitDirective, StarsRatingComponent,
-    DotsComponent, DialogComponent, LazyImgDirective, ProgressIndicatorComponent, InfiniteScrollComponent],
+    DotsComponent, DialogComponent, LazyImgDirective, ProgressIndicatorComponent, InfiniteScrollComponent,
+    SidebarComponent],
   entryComponents: [ControlErrorComponent],
 })
 export class SharedModule { }

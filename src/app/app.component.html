@@ -1,18 +1,13 @@
 <div id="app-container">
-  
   <app-alert></app-alert>
-
-  <!--
-  <app-dialog></app-dialog> -->
-
   <main class="app-content">
     <router-outlet #outlet="outlet"></router-outlet>
   </main>
 
   <!-- Modal -->
-  <!-- <div id="modal-container" class="hidden">
+  <div id="modal-container" class="hidden">
     <div id="close" (click)="removeModal()"><i class="fas fa-times"></i></div>
   </div>
-  <div id="modal-overlay" class="hidden" (click)="removeModal()"></div> -->
+  <div id="modal-overlay" class="hidden" (click)="removeModal()"></div>
 
 </div>

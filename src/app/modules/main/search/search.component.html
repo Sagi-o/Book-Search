@@ -1,1 +1,48 @@
-<p>search works!</p>
+<div class="container">
+    <div class="dashboard__header">
+        <div class="dashboard__header__first">
+            <h1>Search</h1>
+        </div>
+        <div class="dashboard__header__second">
+            <!-- <button class="button-primary" (click)="onCreateGroupsClick()" data-intercom-target="create-groups" [class.disabled]="!(volunteers$ | async)?.length">
+                        <i class="fas fa-plus"></i>
+                </button> -->
+        </div>
+    </div>
+
+    <div class="search">
+        <div class="search__bar">
+            <i class="fas fa-search"></i>
+
+            <div class="title-input">
+                <div class="title-input__title">
+                    <!-- <i class="fas fa-book mrd5"></i>
+                    <span>
+                        Book name
+                    </span> -->
+                </div>
+                <div class="title-input__input">
+                    <input #searchInput type="text" class="input" placeholder="Search for a book">
+                </div>
+            </div>
+
+            <div class="search__dots">
+                <app-dots *ngIf="isLoading$ | async"></app-dots>
+            </div>
+        </div>
+
+        <div class="search__results" *ngIf="(results$ | async)?.length else emptySearch">
+            <ng-container *ngFor="let book of results$ | async">
+                <app-book-card [book]="book" (clicked)="onBookClicked($event)"></app-book-card>
+            </ng-container>
+        </div>
+
+        <ng-template #emptySearch>
+            <div class="empty-data mt3">
+                <img id="illustration" src="assets/illustrations/empty.svg" alt="">
+                <span>It seems you did not searched for any book yet</span>
+            </div>
+        </ng-template>
+
+    </div>
+</div>

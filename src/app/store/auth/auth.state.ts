@@ -35,9 +35,9 @@ export class AuthState {
 
     @Action(Login)
     login({ patchState, dispatch, getState }: StateContext<AuthStateModel>, action: Login) {
-        const { username } = getState().loginForm.model;
+        const { username } = getState().loginForm?.model;
 
-        if (!username?.trim()) {
+        if (!username || !username?.trim()) {
             return;
         }
 

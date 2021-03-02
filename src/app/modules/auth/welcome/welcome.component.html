@@ -1,11 +1,14 @@
 <div class="welcome">
     <div class="welcome__content">
         <h2>
-            Welcome to Book Search
+            <i class="fas fa-book mr1"></i> Welcome to Book Search
         </h2>
         <div [formGroup]="loginForm" ngxsForm="auth.loginForm" class="welcome__form">
             <div class="welcome__title">
-                Please enter enter your username to continue
+                <i class="fas fa-info-circle mrd5"></i>
+                <span>
+                    Please enter enter your username to continue
+                </span>
             </div>
 
             <div class="title-input mt1">
@@ -13,17 +16,22 @@
                     Username
                 </div>
                 <div class="title-input__input">
-                    <input type="text" class="input" placeholder="Username" formControlName="username" (keyup.enter)="onContinueClick()">
+                    <input type="text" class="input" placeholder="Your username here" formControlName="username" (keyup.enter)="onContinueClick()">
                 </div>
             </div>
 
             <div class="welcome__cta">
-                <button class="button-accent" (click)="onContinueClick()" [class.disabled]="loginForm.invalid" [class.loading]="isLoading$ | async">Continue</button>
+                <button class="button-primary" (click)="onContinueClick()" [class.disabled]="loginForm.invalid" [class.loading]="isLoading$ | async">
+                    <span>
+                        Continue
+                    </span>
+                    <i class="fas fa-chevron-right mld5"></i>
+                </button>
             </div>
         </div>
     </div>
     <div class="welcome__hero">
-        <img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        <img src="https://images.pexels.com/photos/3646172/pexels-photo-3646172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             alt="">
         <h1>Explore wide variety of books</h1>
     </div>

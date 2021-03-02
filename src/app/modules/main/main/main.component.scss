@@ -1,0 +1,5 @@
+.container {
+    max-width: var(--content-max-width);
+    // Required for routeAnimations
+    position: relative;
+}

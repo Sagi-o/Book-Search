@@ -1,0 +1,71 @@
+<div class="book-details">
+    <div class="book-details__image">
+        <img [src]="book.volumeInfo.imageLinks?.thumbnail ? book.volumeInfo.imageLinks?.thumbnail : book.volumeInfo.imageLinks?.smallThumbnail"
+            alt="">
+
+    </div>
+    <div class="book-details__title">
+        {{ book.volumeInfo.title }}
+
+    </div>
+    <div class="book-details__author">
+        by {{ book.volumeInfo.authors?.length ? book.volumeInfo.authors.join(', ') : '' }}
+    </div>
+
+    <ng-container *ngIf="book.volumeInfo.description">
+
+        <div class="book-details__header">
+            Description
+        </div>
+
+        <div class="book-details__value">
+            {{ book.volumeInfo.description }}
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="book.volumeInfo.categories?.length">
+        <div class="book-details__header">
+            Categories
+        </div>
+
+        <div class="book-details__value">
+            <div class="chips">
+                <ng-container *ngFor="let category of book.volumeInfo.categories">
+                    <div class="chips__chip">
+                        {{ category }}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+    </ng-container>
+
+
+    <ng-container *ngIf="book.volumeInfo.publisher">
+        <div class="book-details__header">
+            Publisher
+        </div>
+        <div class="book-details__value">
+            {{ book.volumeInfo.publisher }}
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="book.volumeInfo.publishedDate">
+        <div class="book-details__header">
+            Published date
+        </div>
+        <div class="book-details__value">
+            {{ book.volumeInfo.publishedDate }}
+        </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="book.volumeInfo.pageCount">
+            <div class="book-details__header">
+                Pages
+            </div>
+            <div class="book-details__value">
+                {{ book.volumeInfo.pageCount }}
+            </div>
+        </ng-container>
+</div>

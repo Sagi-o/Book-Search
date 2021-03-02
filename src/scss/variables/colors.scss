@@ -1,20 +1,20 @@
 :root {
     // --primary: #2B89E7;
-    --primary: rgba(0, 122, 255, 0.95);
-    --primary-light: #E9F4FF;
-    --primary-dark: #0157AE;
+    --primary: #3B2D29;
+    --primary-light: #96A0A1;
+    // --primary-dark: #0157AE;
 
-    --accent: #E72B2B;
-    --accent-light: #FFEDE9;
+    --accent: #7D8997;
+    --accent-light: #BEC2C2;
 
     --gradient-light: #75CAC3;
     --gradient-dark: #2D7488;
 
     --sidebar-background: rgba(244, 244, 244, 0.7);
-    --sidebar-text: var(--dark-3);
-    --sidebar-hover-background: var(--primary-light);
-    --sidebar-selected-text: var(--primary);
-    --sidebar-selected-background: #E9F4FF;
+    --sidebar-text: #3B2D29;
+    --sidebar-hover-background: var(--accent-light);
+    --sidebar-selected-text: white;
+    --sidebar-selected-background: var(--primary);
 
     --navbar-background: white;
     --navbar-text: var(--dark-1);

@@ -29,9 +29,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         ofActionSuccessful(LoginSuccess),
         takeUntil(this.ngUnsubscribe)
       )
-      .subscribe(res => {
-        console.log(res);
-        this.alertService.success(`Welcome ${res.username}`);
+      .subscribe(payload => {
+        this.alertService.success(`Welcome ${payload.username}!`);
         this.router.navigate(['main']);
       });
   }
@@ -44,5 +43,4 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   onContinueClick() {
     this.store.dispatch(new Login());
   }
-
 }

@@ -7,7 +7,7 @@ $bar-height: 45px;
     transform: translateX(-50%);
     display: flex;
     position: fixed;
-    bottom: 0;
+    top: 0;
     z-index: 1010;
     pointer-events: none;
     display: flex;
@@ -26,7 +26,7 @@ $bar-height: 45px;
     padding: 1rem;
     opacity: 1;
     font-weight: var(--font-weight-b);
-    margin-block-end: .5rem;
+    margin-block-start: 1rem;
     border-radius: var(--border-radius);
 
     &.success {
@@ -55,7 +55,7 @@ $bar-height: 45px;
 }
 
 .closed {
-    transform: translateY($bar-height);
+    transform: translateY(-$bar-height);
     opacity: 0;
 }
 
@@ -65,31 +65,4 @@ $bar-height: 45px;
 
 .text {
     display: inline;
-}
-
-@import 'src/scss/variables/breakpoints';
-
-@media only screen and (max-width: $mobile) {
-    $bar-height: 45px;
-
-    .container {
-        top: 0;
-        bottom: none;
-        height: $bar-height;
-        flex-direction: column;
-    }
-
-    .alert {
-        margin-block-end: 0;
-        margin-block-start: .5rem;
-
-        &.closed {
-            transform: translateY(-$bar-height);
-            opacity: 0;
-        }
-    }
-
-    .text {
-        // font-size: var(--font-size-s1);
-    }
 }
