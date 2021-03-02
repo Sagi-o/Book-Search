@@ -53,12 +53,7 @@
     cursor: pointer;
     color: black;
     transition: var(--fast-speed);
-    // color: var(--primary-dark);
     color: var(--text-color-1);
-
-    // &:hover {
-    //     filter: brightness(0.97);
-    // }
 }
 
 .hidden {

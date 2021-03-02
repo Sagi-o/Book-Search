@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { SetSelectedSidebarItem } from './sidebar.actions';
-import { UserState } from '../user';
 import { SidebarItem } from './sidebar-item.model';
-// import { RouterState } from '@ngxs/router-plugin';
 
 interface SidebarStateModel {
     selected: string;
@@ -44,20 +42,6 @@ export class SidebarState {
     static getTitle(state: SidebarStateModel) {
         return state.title;
     }
-
-    // @Selector([RouterState])
-    // static getItems(state: SidebarStateModel, routerState: RouterState) {
-    //     // Find user type and return suitable list
-    //     const firstUrlChild = (routerState as any).state.root.firstChild.url[0].path;
-    //     switch (firstUrlChild) {
-    //         case ('leader'):
-    //             return state.items.ngo;
-    //         case ('company'):
-    //             return state.items.company;
-    //         default:
-    //             return [];
-    //     }
-    // }
 
     @Selector()
     static getItems(state: SidebarStateModel) {

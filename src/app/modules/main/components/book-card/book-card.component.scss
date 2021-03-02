@@ -1,0 +1,77 @@
+.book-card {
+    max-height: 380px;
+    height: 380px;
+    max-width: 230px;
+    width: 230px;
+    margin-inline-end: 1rem;
+    margin-block-end: 1rem;
+    border: 1px solid var(--accent-light);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: var(--fast-speed);
+    background: rgba(211, 216, 217, 0.3);
+    position: relative;
+
+    &:hover {
+        box-shadow: var(--shadow-3);
+        border: 1px solid var(--primary);
+    }
+
+    &__image {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        min-height: 250px;
+        max-height: 250px;
+        background: lightgray;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            box-shadow: var(--shadow-2);
+            background: gray;
+        }
+    }
+
+    &__title {
+        margin-block-start: 1rem;
+        font-family: 'Montserrat';
+        font-weight: var(--font-weight-b);
+        text-overflow: ellipsis;
+        max-height: 54px;
+        overflow: hidden;
+    }
+
+    &__author {
+        color: gray;
+        font-size: var(--font-size-s1);
+        margin-block-start: .5rem;
+    }
+
+    #wishlist-icon {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.2rem;
+        border-radius: 50%;
+        width: 1.8rem;
+        height: 1.8rem;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: var(--fast-speed);
+
+        &:hover {
+            filter: brightness(0.95)
+        }
+    }
+}
+
+.wishlisted {
+    // color: var(--yellow) !important;
+    background: var(--yellow) !important;
+}

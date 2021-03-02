@@ -1,8 +1,6 @@
 :root {
-    // --primary: #2B89E7;
     --primary: #3B2D29;
     --primary-light: #96A0A1;
-    // --primary-dark: #0157AE;
 
     --accent: #7D8997;
     --accent-light: #BEC2C2;
@@ -21,7 +19,6 @@
 
     --focus: var(--primary);
     
-    // Gray - light to dark
     --gray-light-0: rgb(250, 250, 250);
     --gray-light-1: #f4f4f4;
     --gray-light-2: #f2f2f2;
@@ -52,13 +49,9 @@
     --yellow: #f4b400;
     --yellow-1: #FFC700;
     --yellow-light: #fffac8;
-    // --yellow-light: #fce8b2;
-
-    // --red-light: #FFD3D3;
 
     --gradient-0: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
 
-    // Colors for light mode
     --white: #fff;
     --black: #000;
 
@@ -67,7 +60,6 @@
     --light-0: #FCFDFE;
     --light-1: rgb(250, 250, 250);
     --light-2: #f2f2f2;
-    // --light-2: #f2f2f2;
     --light-3: #CCCCCC;
 
     --dark-0: #131313;
@@ -76,68 +68,4 @@
     --dark-3: #343a40;
     --dark-4: #6D6D6D;
     --dark-5: #AFAFAF;
-
-    // Checkout
-    --checkout-bg: #fff;
-    --checkout-plan-bg: #F5F7FB;;
-    --checkout-plan-bold-bg: rgba(255, 255, 255, 0.6);
-    --checkout-plans-border: #F5F5F5;
-}
-
-.dark {
-    // --primary: rgba(43, 137, 231, 0.75);
-    --primary: rgba(0, 122, 255, 0.85);
-    --primary-light: rgba(233, 244, 255, 0.03);
-    --primary-dark: rgba(2, 87, 174, 0.7);
-
-    --accent: rgba(231, 43, 43, 0.75);
-    --accent-light: rgba(255, 237, 233, 0.7);
-
-    --sidebar-background: rgba(55, 55, 55, 0.85);
-    --sidebar-text: var(--dark-1);
-    --sidebar-hover-background: rgba(255, 255, 255, 0.16);
-    --sidebar-selected-text: #DDDDDD;
-    --sidebar-selected-background: rgba(255, 255, 255, 0.16);
-
-    --navbar-background: #2D2D2D;
-    --navbar-text: var(--dark-1);
-
-    --gray-1: rgba(229, 229, 234, 0.8);
-    --green-1: rgba(49, 216, 78, 0.8);
-
-    --green-bg-opacity: rgba(227, 241, 223, 0.87);
-    --red-bg-opacity: rgba(251, 234, 229, 0.87);
-    --orange-bg-opacity: rgba(252, 235, 219, 0.87);
-    --black-bg-opacity: rgba(38, 38, 38, 0.87);
-
-    --purple-light: rgba(233, 244, 255, 0.05);
-    --red-light: rgba(233, 244, 255, 0.05);
-    --blue-light: rgba(233, 244, 255, 0.05);
-    --yellow-light: rgba(233, 244, 255, 0.05);
-
-    // --blue-light: #e2eeff75;
-    // --purple-light: #ebd8f975;
-    // --red-light: #ffd3d33d;
-    // --yellow-light: #fff7ac70;
-
-    --white: black;
-    --black: white;
-
-    --white-opacity: rgba(255, 255, 255, 0.2);
-
-    --light-0: #181818;
-    --light-1: #373737;
-    --light-2: #323232;
-    --light-3: #6D6D6D;
-
-    --dark-0: #DDDDDD;
-    --dark-1: #DDDDDD;
-    --dark-2: #DDDDDD;
-    --dark-3: #DDDDDD;
-
-    // Checkout
-    --checkout-bg: #212528;
-    --checkout-plan-bg: #343a40;
-    --checkout-plan-bold-bg: #343a40;
-    --checkout-plans-border: #333333;
 }

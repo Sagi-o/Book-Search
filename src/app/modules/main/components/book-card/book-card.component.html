@@ -1,0 +1,13 @@
+<div class="book-card" (click)="onBookClick($event)">
+    <div class="book-card__image">
+        <img [src]="book.volumeInfo.imageLinks?.thumbnail ? book.volumeInfo.imageLinks?.thumbnail : book.volumeInfo.imageLinks?.smallThumbnail"
+            alt="">
+    </div>
+    <div class="book-card__title">
+        {{ book.volumeInfo.title }}
+    </div>
+    <div class="book-card__author">
+        {{ book.volumeInfo.authors?.length ? book.volumeInfo.authors.join(', ') : '' }}
+    </div>
+    <i id="wishlist-icon" class="far fa-bookmark" [class.wishlisted]="isFoundOnWishlist() | async"></i>
+</div>

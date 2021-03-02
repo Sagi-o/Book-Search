@@ -1,0 +1,20 @@
+.wishlist {
+    margin-block-start: 2rem;
+
+    &__books {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+}
+
+@import 'src/scss/variables/breakpoints';
+
+@media only screen and (max-width: $tablet) {
+    .wishlist {
+        &__books {
+            justify-content: center;
+        }
+    }
+}

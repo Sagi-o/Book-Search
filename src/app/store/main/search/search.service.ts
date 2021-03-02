@@ -5,6 +5,12 @@ import { map } from 'rxjs/operators';
 import { Book } from './book.model';
 import { environment } from '../../../../environments/environment';
 
+export type SearchResponse = {
+    items: Book[]
+    kind: string,
+    totalItems: number
+};
+
 @Injectable({
     providedIn: 'root'
 })
@@ -14,10 +20,8 @@ export class SearchService {
 
     constructor(private http: HttpClient) {}
 
-    search(query: string): Observable<Book[]> {
-        return this.http
-               .get<{ items: Book[] }>(`${this.BOOKS_ENDPOINT}?q=${query}&key=${environment.googleApiKey}`)
-               .pipe(map(books => books.items || []));
+    search(query: string, startIndex: number, maxResults: number): Observable<SearchResponse> {
+        return this.http.get<SearchResponse>(`${this.BOOKS_ENDPOINT}?q=${query}&startIndex=${startIndex}&maxResults=${maxResults}&key=${environment.googleApiKey}`);
     }
 
     getById(volumeId: string): Observable<Book> {

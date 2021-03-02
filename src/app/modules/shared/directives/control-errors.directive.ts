@@ -4,12 +4,9 @@ import { NgControl } from '@angular/forms';
 import { Subject, merge, EMPTY, Observable, fromEvent } from 'rxjs';
 import { takeUntil, shareReplay } from 'rxjs/operators';
 import { ControlErrorComponent } from '../components/global/control-error/control-error.component';
-import { FormSubmitDirective } from './form-submit.directive';
 
 export const defaultErrors = {
     required: (error) => `Required field`,
-    minlength: ({ requiredLength, actualLength }) => `נדרשים לפחות ${requiredLength} תווים אך נמצאו ${actualLength}`,
-    maxlength: ({ requiredLength, actualLength }) => `נדרשים מקסימום ${requiredLength} תווים אך נמצאו ${actualLength}`,
     email: (error) => `Email format is required`
 };
 
@@ -29,7 +26,6 @@ export class ControlErrorsDirective implements OnInit, OnDestroy {
     ngUnsubscribe = new Subject();
 
     constructor(@Self() private control: NgControl,
-                @Optional() @Host() private form: FormSubmitDirective,
                 @Inject(FORM_ERRORS) private errors,
                 private host: ElementRef<HTMLFormElement>,
                 private vcr: ViewContainerRef,

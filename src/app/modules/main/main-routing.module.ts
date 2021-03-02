@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from './main/main.component';
-import { SearchComponent } from './search/search.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
+import { MainComponent } from './pages/main/main.component';
+import { SearchComponent } from './pages/search/search.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 // import { AuthGuard } from '../shared/services/guards/auth.guard';
 
 const routes: Routes = [{
