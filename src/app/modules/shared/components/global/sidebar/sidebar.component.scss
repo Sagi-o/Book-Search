@@ -12,6 +12,7 @@
     color: var(--dark-1);
     padding: 2rem;
     max-width: 1200px;
+    background: rgba(211, 216, 217, 0.25);
     // TODO: Check if it good that it is not scrolled in y axis (can't make sticky postion with parent overflow
     // overflow-y: scroll;
 }

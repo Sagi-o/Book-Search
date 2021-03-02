@@ -12,9 +12,11 @@
     flex-direction: column;
     cursor: pointer;
     transition: var(--fast-speed);
+    background: rgba(211, 216, 217, 0.35);
 
     &:hover {
         box-shadow: var(--shadow-3);
+        border: 1px solid var(--primary);
     }
 
     &__image {
@@ -35,6 +37,8 @@
         font-family: 'Montserrat';
         font-weight: var(--font-weight-b);
         text-overflow: ellipsis;
+        max-height: 54px;
+        overflow: hidden;
         // max-width: 100px;
     }
 

@@ -8,7 +8,7 @@
         {{ book.volumeInfo.title }}
 
     </div>
-    <div class="book-details__author">
+    <div class="book-details__author" *ngIf="book.volumeInfo.authors?.length">
         by {{ book.volumeInfo.authors?.length ? book.volumeInfo.authors.join(', ') : '' }}
     </div>
 
