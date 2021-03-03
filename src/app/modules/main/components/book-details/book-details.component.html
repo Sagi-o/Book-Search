@@ -6,7 +6,9 @@
     </div>
     <div class="book-details__title">
         {{ book.volumeInfo.title }}
-
+    </div>
+    <div class="book-details__subtitle">
+        {{ book.volumeInfo.subtitle }}
     </div>
     <div class="book-details__author" *ngIf="book.volumeInfo.authors?.length">
         by {{ book.volumeInfo.authors?.length ? book.volumeInfo.authors.join(', ') : '' }}
@@ -69,7 +71,7 @@
         </div>
     </ng-container>
 
-    <div class="book-details__wishlist"  (click)="onWishlistClicked()">
+    <div class="book-details__wishlist" (click)="onWishlistClicked()">
         <div *ngIf="!(isFoundOnWishlist | async); else foundOnWishlist">
             <i class="far fa-bookmark mrd5"></i>
             <span>
