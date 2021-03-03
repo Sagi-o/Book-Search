@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/store/main/search/book.model';
@@ -14,6 +14,7 @@ export class BookDetailsComponent implements OnInit {
   @Select(WishlistState.getBooks) wishlist$: Observable<Book[]>;
 
   @Input() book: Book;
+  @Output() wishlistClicked = new EventEmitter<Book>();
 
   constructor(private store: Store) { }
 
@@ -24,11 +25,7 @@ export class BookDetailsComponent implements OnInit {
     return this.store.select(WishlistState.isFoundOnWishlist(this.book.id));
   }
 
-  onAddToWishlistClick() {
-    this.store.dispatch(new AddToWishlist(this.book));
-  }
-
-  onRemoveFromWishlistClick() {
-    this.store.dispatch(new RemoveFromWishlist(this.book.id));
+  onWishlistClicked() {
+    this.wishlistClicked.emit(this.book);
   }
 }

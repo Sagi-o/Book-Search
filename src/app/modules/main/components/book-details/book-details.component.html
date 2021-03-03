@@ -69,15 +69,15 @@
         </div>
     </ng-container>
 
-    <div class="book-details__wishlist">
-        <div *ngIf="!(isFoundOnWishlist() | async); else foundOnWishlist" (click)="onAddToWishlistClick()">
+    <div class="book-details__wishlist"  (click)="onWishlistClicked()">
+        <div *ngIf="!(isFoundOnWishlist() | async); else foundOnWishlist">
             <i class="far fa-bookmark mrd5"></i>
             <span>
                 Add to my wish list
             </span>
         </div>
         <ng-template #foundOnWishlist>
-            <div (click)="onRemoveFromWishlistClick()">
+            <div>
                 <i class="fas fa-bookmark mrd5"></i>
                 <span>
                     Remove from my wishlist

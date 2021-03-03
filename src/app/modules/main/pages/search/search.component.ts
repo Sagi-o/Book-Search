@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { filter, debounceTime, distinctUntilChanged, tap, takeUntil, map } from 'rxjs/operators';
@@ -25,9 +25,15 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private ngUnsubscribe = new Subject();
 
+  private wishlistClicked: EventEmitter<any> = new EventEmitter<Book>();
+
   constructor(private store: Store, private modalService: ModalService) { }
 
   ngOnInit(): void {
+    this.wishlistClicked.pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(book => {
+        this.onWishlistClick(book);
+      });
   }
 
   ngAfterViewInit() {
@@ -52,7 +58,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onBookClicked(book: Book) {
-    this.modalService.init(BookDetailsComponent, { book }, {});
+    this.modalService.init(BookDetailsComponent, { book }, { wishlistClicked: this.wishlistClicked });
   }
 
   onWishlistClick(book: Book) {
