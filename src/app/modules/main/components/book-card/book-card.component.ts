@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
 import { Book } from 'src/app/store/main/search/book.model';
-import { WishlistState } from 'src/app/store/main/wishlist';
 
 @Component({
   selector: 'app-book-card',
