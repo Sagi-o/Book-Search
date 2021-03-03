@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { listAnimation } from 'src/app/modules/shared/animations/list.animations';
 import { ModalService } from 'src/app/modules/shared/services/global/modal.service';
 import { Book } from 'src/app/store/main/search/book.model';
-import { WishlistState } from 'src/app/store/main/wishlist';
+import { AddToWishlist, RemoveFromWishlist, WishlistState } from 'src/app/store/main/wishlist';
 import { BookDetailsComponent } from '../../components/book-details/book-details.component';
 
 @Component({
@@ -16,9 +16,18 @@ import { BookDetailsComponent } from '../../components/book-details/book-details
 export class WishlistComponent implements OnInit {
   @Select(WishlistState.getBooks) wishlist$: Observable<Book[]>;
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService, private store: Store) { }
 
   ngOnInit(): void {
+  }
+
+  onWishlistClick(book: Book) {
+    const isFoundOnWishlist = this.store.selectSnapshot(WishlistState.isFoundOnWishlist(book.id));
+    if (isFoundOnWishlist) {
+      this.store.dispatch(new RemoveFromWishlist(book.id));
+    } else {
+      this.store.dispatch(new AddToWishlist(book));
+    }
   }
 
   onBookClicked(book: Book) {

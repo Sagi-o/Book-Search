@@ -3,8 +3,6 @@
         <div class="dashboard__header__first">
             <h1>Search</h1>
         </div>
-        <div class="dashboard__header__second">
-        </div>
     </div>
 
     <div class="search">
@@ -37,7 +35,7 @@
 
         <div class="search__results" *ngIf="(results$ | async)?.length as resultsLength else emptySearch" [@listAnimation]="resultsLength">
             <ng-container *ngFor="let book of results$ | async">
-                <app-book-card [book]="book" (clicked)="onBookClicked($event)"></app-book-card>
+                <app-book-card [book]="book" (clicked)="onBookClicked($event)" (wishlistClicked)="onWishlistClick($event)"></app-book-card>
             </ng-container>
         </div>
 

@@ -6,6 +6,7 @@ import { listAnimation } from 'src/app/modules/shared/animations/list.animations
 import { ModalService } from 'src/app/modules/shared/services/global/modal.service';
 import { NextPage, PreviousPage, Search, SearchState } from 'src/app/store/main/search';
 import { Book } from 'src/app/store/main/search/book.model';
+import { WishlistState, RemoveFromWishlist, AddToWishlist } from 'src/app/store/main/wishlist';
 import { BookDetailsComponent } from '../../components/book-details/book-details.component';
 
 @Component({
@@ -52,6 +53,15 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onBookClicked(book: Book) {
     this.modalService.init(BookDetailsComponent, { book }, {});
+  }
+
+  onWishlistClick(book: Book) {
+    const isFoundOnWishlist = this.store.selectSnapshot(WishlistState.isFoundOnWishlist(book.id));
+    if (isFoundOnWishlist) {
+      this.store.dispatch(new RemoveFromWishlist(book.id));
+    } else {
+      this.store.dispatch(new AddToWishlist(book));
+    }
   }
 
   onNextPageClick() {

@@ -3,16 +3,11 @@
         <div class="dashboard__header__first">
             <h1>Wishlist ({{ (wishlist$ | async)?.length }})</h1>
         </div>
-        <div class="dashboard__header__second">
-            <!-- <button class="button-primary" (click)="onCreateGroupsClick()" data-intercom-target="create-groups" [class.disabled]="!(volunteers$ | async)?.length">
-                            <i class="fas fa-plus"></i>
-                    </button> -->
-        </div>
     </div>
     <div class="wishlist" *ngIf="(wishlist$ | async)?.length as wishlistLength; else emptyWishlist">
         <div class="wishlist__books" [@listAnimation]="wishlistLength">
             <ng-container *ngFor="let book of wishlist$ | async">
-                <app-book-card [book]="book" (clicked)="onBookClicked($event)"></app-book-card>
+                <app-book-card [book]="book" (clicked)="onBookClicked($event)" (wishlistClicked)="onWishlistClick($event)"></app-book-card>
             </ng-container>
         </div>
     </div>

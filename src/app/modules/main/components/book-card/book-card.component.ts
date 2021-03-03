@@ -13,6 +13,7 @@ import { AddToWishlist, RemoveFromWishlist, WishlistState } from 'src/app/store/
 export class BookCardComponent implements OnInit {
   @Input() book: Book;
   @Output() clicked = new EventEmitter<Book>();
+  @Output() wishlistClicked = new EventEmitter<Book>();
 
   constructor(private store: Store) { }
 
@@ -25,12 +26,7 @@ export class BookCardComponent implements OnInit {
 
   onBookClick($event: any) {
     if ($event.target.id === 'wishlist-icon') {
-      const isFoundOnWishlist = this.store.selectSnapshot(WishlistState.isFoundOnWishlist(this.book.id));
-      if (isFoundOnWishlist) {
-        this.store.dispatch(new RemoveFromWishlist(this.book.id));
-      } else {
-        this.store.dispatch(new AddToWishlist(this.book));
-      }
+      this.wishlistClicked.emit(this.book);
       return;
     }
     this.clicked.emit(this.book);
