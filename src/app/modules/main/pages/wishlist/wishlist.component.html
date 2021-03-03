@@ -7,7 +7,7 @@
     <div class="wishlist" *ngIf="(wishlist$ | async)?.length as wishlistLength; else emptyWishlist">
         <div class="wishlist__books" [@listAnimation]="wishlistLength">
             <ng-container *ngFor="let book of wishlist$ | async">
-                <app-book-card [book]="book" (clicked)="onBookClicked($event)" (wishlistClicked)="onWishlistClick($event)"></app-book-card>
+                <app-book-card [book]="book" [isFoundOnWishlist]="isFoundOnWishlist(book) | async" (clicked)="onBookClicked($event)" (wishlistClicked)="onWishlistClick($event)"></app-book-card>
             </ng-container>
         </div>
     </div>

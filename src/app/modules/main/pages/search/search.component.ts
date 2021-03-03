@@ -58,7 +58,9 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onBookClicked(book: Book) {
-    this.modalService.init(BookDetailsComponent, { book }, { wishlistClicked: this.wishlistClicked });
+    this.modalService.init(BookDetailsComponent,
+      { book, isFoundOnWishlist: this.isFoundOnWishlist(book) },
+      { wishlistClicked: this.wishlistClicked });
   }
 
   onWishlistClick(book: Book) {
@@ -76,5 +78,9 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onPreviousPageClick() {
     this.store.dispatch(new PreviousPage());
+  }
+
+  isFoundOnWishlist(book: Book): Observable<boolean> {
+    return this.store.select(WishlistState.isFoundOnWishlist(book.id));
   }
 }

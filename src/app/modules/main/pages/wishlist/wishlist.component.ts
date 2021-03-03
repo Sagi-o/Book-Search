@@ -40,6 +40,12 @@ export class WishlistComponent implements OnInit {
   }
 
   onBookClicked(book: Book) {
-    this.modalService.init(BookDetailsComponent, { book, wishlistClicked: this.wishlistClicked }, {});
+    this.modalService.init(BookDetailsComponent,
+      { book, isFoundOnWishlist: this.isFoundOnWishlist(book) },
+      { wishlistClicked: this.wishlistClicked });
+  }
+
+  isFoundOnWishlist(book: Book): Observable<boolean> {
+    return this.store.select(WishlistState.isFoundOnWishlist(book.id));
   }
 }

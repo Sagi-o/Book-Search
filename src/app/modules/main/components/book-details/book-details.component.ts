@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/store/main/search/book.model';
-import { AddToWishlist, RemoveFromWishlist, WishlistState } from 'src/app/store/main/wishlist';
+import { WishlistState } from 'src/app/store/main/wishlist';
 
 @Component({
   selector: 'app-book-details',
@@ -11,18 +11,14 @@ import { AddToWishlist, RemoveFromWishlist, WishlistState } from 'src/app/store/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookDetailsComponent implements OnInit {
-  @Select(WishlistState.getBooks) wishlist$: Observable<Book[]>;
-
   @Input() book: Book;
+  @Input() isFoundOnWishlist: Observable<boolean>;
+
   @Output() wishlistClicked = new EventEmitter<Book>();
 
-  constructor(private store: Store) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  isFoundOnWishlist(): Observable<boolean> {
-    return this.store.select(WishlistState.isFoundOnWishlist(this.book.id));
   }
 
   onWishlistClicked() {

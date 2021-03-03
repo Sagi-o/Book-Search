@@ -9,5 +9,5 @@
     <div class="book-card__author">
         {{ book.volumeInfo.authors?.length ? book.volumeInfo.authors.join(', ') : '' }}
     </div>
-    <i id="wishlist-icon" class="far fa-bookmark" [class.wishlisted]="isFoundOnWishlist() | async"></i>
+    <i id="wishlist-icon" class="far fa-bookmark" [class.wishlisted]="isFoundOnWishlist"></i>
 </div>
