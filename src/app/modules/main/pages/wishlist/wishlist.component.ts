@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { listAnimation } from 'src/app/modules/shared/animations/list.animations';
 import { ModalService } from 'src/app/modules/shared/services/global/modal.service';
 import { Book } from 'src/app/store/main/search/book.model';
@@ -26,10 +26,9 @@ export class WishlistComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.wishlistClicked
       .pipe(
-        takeUntil(this.ngUnsubscribe)
-      ).subscribe(book => {
-        this.onWishlistClick(book);
-      });
+        takeUntil(this.ngUnsubscribe),
+        tap((book: Book) => this.onWishlistClick(book))
+      ).subscribe();
   }
 
   ngOnDestroy(): void {

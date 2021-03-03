@@ -32,10 +32,9 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.wishlistClicked
       .pipe(
-        takeUntil(this.ngUnsubscribe)
-      ).subscribe(book => {
-        this.onWishlistClick(book);
-      });
+        takeUntil(this.ngUnsubscribe),
+        tap((book: Book) => this.onWishlistClick(book))
+      ).subscribe();
   }
 
   ngAfterViewInit() {
