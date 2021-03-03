@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { BookDetailsComponent } from '../../components/book-details/book-details
   styleUrls: ['./wishlist.component.scss'],
   animations: [listAnimation]
 })
-export class WishlistComponent implements OnInit {
+export class WishlistComponent implements OnInit, OnDestroy {
   @Select(WishlistState.getBooks) wishlist$: Observable<Book[]>;
 
   private ngUnsubscribe = new Subject();
@@ -24,10 +24,17 @@ export class WishlistComponent implements OnInit {
   constructor(private modalService: ModalService, private store: Store) { }
 
   ngOnInit(): void {
-    this.wishlistClicked.pipe(takeUntil(this.ngUnsubscribe))
-    .subscribe(book => {
-      this.onWishlistClick(book);
-    });
+    this.wishlistClicked
+      .pipe(
+        takeUntil(this.ngUnsubscribe)
+      ).subscribe(book => {
+        this.onWishlistClick(book);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   onWishlistClick(book: Book) {
